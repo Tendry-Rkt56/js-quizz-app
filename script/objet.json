@@ -1,0 +1,175 @@
+[
+    {
+        "valeur": "Quelle est la capitale de Madagascar ?",
+        "reponses": [
+            "Mahajanga",
+            "Antananarivo",
+            "Toamasina"
+        ],
+        "correct": 1,
+        "niveau": 0
+    },
+    {
+        "valeur": "Quelle est la capitale de la France?",
+        "reponses": [
+            "Rome",
+            "Marseille",
+            "Paris"
+        ],
+        "correct": 2,
+        "niveau": 0
+    },
+    {
+        "valeur": "Quelle est la capitale de l'Allemagne ?",
+        "reponses": [
+            "Berlin",
+            "Francfurt",
+            "Munich"
+        ],
+        "correct": 0,
+        "niveau": 0
+    },
+    {
+        "valeur": "Quelle est la capitale de l'Autriche ? ",
+        "reponses": [
+            "Berne",
+            "Donestk",
+            "Vienne"
+        ],
+        "correct": 0,
+        "niveau": 0
+    },
+    {
+        "valeur": "Quel est le club qui a remporté la LDC 3 fois de suite ?",
+        "reponses": [
+            "AC Milan",
+            "Real Madrid",
+            "Bayern München"
+        ],
+        "correct": 1,
+        "niveau": 1
+    },
+    {
+        "valeur": "Quel entraineur a remporte la LDC 3 fois de suite?",
+        "reponses": [
+            "Pep Guardiola",
+            "Zinédine Zidane",
+            "Jose Mourinho"
+        ],
+        "correct": 1,
+        "niveau": 1
+    },
+    {
+        "valeur": "Dans quel pays a été organisé la CDM 2010 ?",
+        "reponses": [
+            "Afrique du Sud",
+            "Russie",
+            "Japon"
+        ],
+        "correct": 0,
+        "niveau": 1
+    },
+    {
+        "valeur": "En quelle année le Real Madrid a t il remporté la Decima ?",
+        "reponses": [
+            2014,
+            2015,
+            2016
+        ],
+        "correct": 0,
+        "niveau": 1
+    },
+    {
+        "valeur": "En quelle année Chelsea a-t-il remporte sa première LDC ? ",
+        "reponses": [
+            2010,
+            2011,
+            2012,
+            2021
+        ],
+        "correct": 2,
+        "niveau": 1
+    },
+    {
+        "valeur": "Quel est le joueur qui a remporté le plus grand nombre de BO ?",
+        "reponses": [
+            "Ronaldinho",
+            "Lionel Messi",
+            "Kaka",
+            "Cristiano Ronaldo"
+        ],
+        "correct": 1,
+        "niveau": 1
+    },
+    {
+        "valeur": "Cristiano Ronaldo détient le record de but marqué au cours d'une campagne de LDC,combien est ce record?",
+        "reponses": [
+            "15 buts",
+            "16 buts",
+            "17 buts"
+        ],
+        "correct": 2,
+        "niveau": 1
+    },
+    {
+        "valeur": "Quel est le plus gros transfert de l'histoire du football ?",
+        "reponses": [
+            "Kylian Mbappe",
+            "Cristiano Ronaldo",
+            "Neymar Jr"
+        ],
+        "correct": 2,
+        "niveau": 1
+    },
+    {
+        "valeur": "En quelle année Man City a-t-il remporte sa première LDC ? ",
+        "reponses": [
+            2020,
+            2021,
+            2022,
+            2023
+        ],
+        "correct": 3,
+        "niveau": 1
+    },
+    {
+        "valeur" : "Quel est le résultat de 7 + 5 ?",
+        "reponses": [
+            10, 11, 12, 13
+        ],
+        "correct": 2,
+        "niveau": 2
+    },
+    {
+        "valeur" : "Quelle est la valeur de x si 2x = 14 ?",
+        "reponses": [
+            5, 6, 7, 8
+        ],
+        "correct": 2,
+        "niveau": 2
+    },
+    {
+        "valeur" : "Combien y a-t-il de côtés dans un hexagone ?",
+        "reponses": [
+            5, 6, 7, 8, 9
+        ],
+        "correct": 1,
+        "niveau": 2
+    },
+    {
+        "valeur" : "Si un angle est de 90 degrés, comment est-il appelé ?",
+        "reponses": [
+            "Droit", "Aigu", "Obtus", "Plat"
+        ],
+        "correct": 0,
+        "niveau": 2
+    },
+    {
+        "valeur" : "Quelle est la racine carrée de 81 ?",
+        "reponses": [
+            7, 8, 9, 10
+        ],
+        "correct": 2,
+        "niveau": 2
+    }
+]
