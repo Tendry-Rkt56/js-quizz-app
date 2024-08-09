@@ -3,63 +3,6 @@ import { QCM } from "./function/module_QCM.js"
 
 var container = document.querySelector('.containers')
 
-// var ObjetQCM = [
-//     {
-//         valeur: 'Quel entraineur a remporte la LDC 3 fois de suite?',
-//         reponses: ['Pep Guardiola', 'Zinédine Zidane', 'Jose Mourinho'],
-//         correct: 1,
-//         niveau: 1
-//     },
-//     {
-//         valeur: 'Quel entraineur a remporte la LDC 3 fois de suite?',
-//         reponses: ['Pep Guardiola', 'Zinédine Zidane', 'Jose Mourinho'],
-//         correct: 1,
-//         niveau: 1
-//     },
-//     {
-//         valeur: 'Quel entraineur a remporte la LDC 3 fois de suite?',
-//         reponses: ['Pep Guardiola', 'Zinédine Zidane', 'Jose Mourinho'],
-//         correct: 1,
-//         niveau: 0
-//     },
-//     {
-//         valeur: 'Quel entraineur a remporte la LDC 3 fois de suite?',
-//         reponses: ['Pep Guardiola', 'Zinédine Zidane', 'Jose Mourinho'],
-//         correct: 1,
-//         niveau: 2
-//     },
-//     {
-//         valeur: 'Quel entraineur a remporte la LDC 3 fois de suite?',
-//         reponses: ['Pep Guardiola', 'Zinédine Zidane', 'Jose Mourinho'],
-//         correct: 1,
-//         niveau: 1
-//     },
-//     {
-//         valeur: 'Quelle est la capitale de l\`Allemagne ?',
-//         reponses: ['Berlin', 'Munich', 'Rome'],
-//         correct: 0,
-//         niveau: 2
-//     },
-//     {
-//         valeur: 'Quelle est la capitale de l\`Allemagne ?',
-//         reponses: ['Berlin', 'Munich', 'Rome'],
-//         correct: 0,
-//         niveau: 0
-//     },
-//     {
-//         valeur: 'Quelle est la capitale de l\`Allemagne ?',
-//         reponses: ['Berlin', 'Munich', 'Rome'],
-//         correct: 0,
-//         niveau: 0
-//     },
-//     {
-//         valeur: 'Quelle est la capitale de l\`Allemagne ?',
-//         reponses: ['Berlin', 'Munich', 'Rome'],
-//         correct: 0,
-//         niveau: 1
-//     }
-// ]
-
 async function recupData() {
     try {
         var data = await fetch('script/objet.json')
@@ -115,9 +58,6 @@ async function useData() {
         data.forEach(element => {
             tableau.push(element)
         })
-        // ObjetQCM.forEach(element => {
-        //     tableau.push(element)
-        // })
 
         console.table(tableau)
 
@@ -155,7 +95,7 @@ main()
 
 /**
  * Permet de calculer le score 
- * @returns undefined || number
+ * @returns null || number
  */
 function vueScore() {
     var notes = null
