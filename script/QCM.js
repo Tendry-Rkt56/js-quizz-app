@@ -194,7 +194,7 @@ async function affichageScore() {
  */
 (async function main() {
     await useData()
-    initialize()
+    await initialize()
     await Selection(tabQuest)
     await affichageScore()
 })()
