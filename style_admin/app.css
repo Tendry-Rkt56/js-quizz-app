@@ -41,16 +41,17 @@ body {
     width:95%;
     margin-bottom:10px;
     color:black;
-    font-size:15px;
+    font-size:16px;
     font-weight:bold;
     font-style:italic;
     font-family:monospace;
 }
 
 .li {
-    font-size:12px;
-    padding:8px 12px;
+    font-size:14px;
+    padding:3px 12px;
     border-radius:5px;
+    margin-bottom:2Px;
     transition:0.5s;
 }
 
@@ -73,6 +74,7 @@ body {
     left:50%;
     z-index:1;
 }
+
 
 @media (max-width:991px) {
     .container{

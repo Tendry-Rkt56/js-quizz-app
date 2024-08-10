@@ -1,13 +1,24 @@
 import { QCM } from "./function/module_QCM.js"
 //--------------------------------------------------------------------------------
 
-var container = document.querySelector('.containers')
+const container = document.querySelector('.containers')
+const loader = document.querySelector('.loader')
+const tableau = []
+const tabQuest = []
+const niveau = ['Géographie', 'Football', 'Mathématiques']
 
+let selected = 2
+
+/**
+ * Récupère les données dans le fichier objet.json via fetch
+ * @returns 
+ */
 async function recupData() {
     try {
-        var data = await fetch('script/objet.json')
+        await new Promise(resolve => setTimeout(resolve, 500))
+        const data = await fetch('script/objet.json')
         if (data.ok) {
-            var result = await data.json()
+            const result = await data.json()
             return JSON.stringify(result)
         }
         else throw new Error('Il y erreur')
@@ -15,56 +26,81 @@ async function recupData() {
     catch (error) {
         console.log(error)
     }
+    finally {
+        loader.style.display = "none"
+    }
 }
 
-var niveau = ['Geographie', 'Football', 'Mathématiques']
-var createSelect = () => {
-    var select = document.createElement('select')
+
+/**
+ * Permet d'afficher les options dans le DOM
+ */
+(function createSelect () {
+    const select = document.createElement('select')
     select.setAttribute('name', select)
     select.style.width = '40%'
     select.classList.add('form-select')
     for (let i = 0; i < 3; i++) {
-        var option = document.createElement('option')
+        const option = document.createElement('option')
         option.setAttribute('value', i)
+        if (selected == i) option.setAttribute('selected', true)
         option.innerHTML = niveau[i]
         select.appendChild(option)
     }
     return document.querySelector('.content').appendChild(select)
+})()
+
+
+/**
+ * Permet de créer un effet de chargement
+ */
+async function loading () {
+    loader.style.display = "block"
+    await new Promise(resolve => setTimeout(resolve, 300))
+    loader.style.display = "none"
 }
 
-createSelect()
 
-var score = []
+/**
+ * Permet de séléctionner les questions et les réponses associées en fonction du select
+ * @var Array tab
+ */
+let score = []
 async function Selection(tab) {
-    var select = document.querySelector('select')
+    const select = document.querySelector('select')
     select.addEventListener('change', async () => {
         container.innerHTML = ''
-        var selected = select.value
+        document.querySelector('.score').innerHTML = ''
+        if (score.length > 0) {
+            score = []
+        }
+        selected = select.value
         tab.forEach(async element => {
+            await loading()
             await element.appendTo(container, selected)
-            var valueRep = await element.checkReponses()
+            const valueRep = await element.checkReponses()
             score.push(valueRep)
-            console.log(score.length)
         })
     })
 }
 
-var tableau = []
-var tabQuest = []
+
+/**
+ * Remplit le tableau tabQuest avec des instances de la classe QCM
+ */
 async function useData() {
     try {
-        var result = await recupData()
-        var data = JSON.parse(result)
+        const result = await recupData()
+        const data = JSON.parse(result)
         data.forEach(element => {
             tableau.push(element)
         })
 
-        console.table(tableau)
-
         tableau.forEach((element, index) => {
-            var Questions = new QCM(index, `${element.valeur}`, `${element.reponses}`, `${element.correct}`, `${element.niveau}`)
+            const Questions = new QCM(index, `${element.valeur}`, `${element.reponses}`, `${element.correct}`, `${element.niveau}`)
             tabQuest.push(Questions)
         })
+
     }
     catch (error) {
         console.log(error)
@@ -73,8 +109,8 @@ async function useData() {
 
 function testAnswers() {
     return new Promise(resolve => {
-        var items = document.querySelector('ul')
-        var allLi = document.querySelectorAll('li')
+        const items = document.querySelector('ul')
+        const allLi = document.querySelectorAll('li')
         allLi.forEach(element => {
             element.addEventListener('click', () => {
                 resolve()
@@ -84,22 +120,25 @@ function testAnswers() {
     })
 }
 
-async function main() {
-    await useData()
-    await Selection(tabQuest)
-    await affichageScore()
-    // await testReponses(tabQuest)
+/**
+ * Affiche des questions et des réponses par défaut
+ */
+async function initialize () {
+    tabQuest.forEach(async element => {
+        await loading()
+        await element.appendTo(container, 2)
+        const valueRep = await element.checkReponses()
+        score.push(valueRep)
+    })
 }
-
-main()
 
 /**
  * Permet de calculer le score 
  * @returns null || number
  */
 function vueScore() {
-    var notes = null
-    var allUl = document.querySelectorAll('ul')
+    let notes = null
+    const allUl = document.querySelectorAll('ul')
     if (score.length == allUl.length && score.length !== 0) {
         notes = 0
         score.forEach(element => {
@@ -107,34 +146,41 @@ function vueScore() {
         })
         return notes
     }
-    return null
+    else {
+        return null
+    }
 
 }
 
-function elScor() {
-    var btn = document.createElement('button')
+/**
+ * Affiche le bouton "Voir score" dans le DOM
+ */
+(function elScor() {
+    const btn = document.createElement('button')
     btn.innerHTML = 'Voir score'
     btn.setAttribute('class', 'btn btn-primary btn-sm')
     return document.querySelector('.content').append(btn)
-}
+})()
 
-elScor()
-
+/**
+ * Affiche le score si toutes les questions ont été repondues
+ */
 async function affichageScore() {
-    var btn = document.querySelector('button')
+    const btn = document.querySelector('button')
     btn.addEventListener('click', () => {
-        var tousLesLi = document.querySelectorAll('li')
-        var p = document.createElement('p')
-        if (vueScore()) {
+        const tousLesLi = document.querySelectorAll('li')
+        const p = document.createElement('p')
+        if (vueScore() !== null && vueScore() >= 0) {
+            console.log(vueScore())
             p.innerHTML = `Votre score est de ${vueScore()} points`
             document.querySelector('.score').appendChild(p)
             tousLesLi.forEach(element => {
                 if (element.getAttribute('data-index') == 'true') {
                     element.style.background = 'green'
                 }
-                // else if (!element.classList.contains('li-fausse')) {
-                //     element.style.background = 'red'
-                // }
+                else if (!element.classList.contains('li-fausse')) {
+                    element.style.background = 'red'
+                }
             })
         }
         else {
@@ -142,3 +188,13 @@ async function affichageScore() {
         }
     })
 }
+
+/**
+ * Fonction principale qui appelle les autres fonctions de lancement
+ */
+(async function main() {
+    await useData()
+    initialize()
+    await Selection(tabQuest)
+    await affichageScore()
+})()
